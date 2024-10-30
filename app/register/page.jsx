@@ -1,4 +1,4 @@
-import LoginForm from "@/app/ui/components/LoginForm";
+import RegisterForm from "../ui/components/RegisterForm";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -10,7 +10,7 @@ export default function LoginPage() {
             <Link href="/">Вернуться назад</Link>
           </div>
         </div>
-        <LoginForm />
+        <RegisterForm />
       </div>
     </main>
   );

@@ -26,14 +26,20 @@ export default async function Page(props) {
         <Search placeholder="Search cards..." />
         <CreateCard />
       </div>
-      <CardsTable
-        session={session?.user}
-        query={query}
-        currentPage={currentPage}
-      />
-      <div className="mt-5 flex w-full justify-center">
-        <Pagination totalThemes={totalThemes} />
-      </div>
+      {totalThemes > 0 ? (
+        <>
+          <CardsTable
+            session={session?.user}
+            query={query}
+            currentPage={currentPage}
+          />
+          <div className="mt-5 flex w-full justify-center">
+            <Pagination totalThemes={totalThemes} />
+          </div>
+        </>
+      ) : (
+        <h2>У вас пока что нет своих карточек</h2>
+      )}
     </div>
   );
 }
