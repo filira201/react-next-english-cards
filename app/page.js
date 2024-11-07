@@ -1,30 +1,11 @@
 import Link from "next/link";
-import QcardsLogo from "./ui/components/QcardsLogo";
 import Image from "next/image";
+import HeroPageHeader from "./ui/components/HeroPageHeader";
 
 export default function Home() {
   return (
     <>
-      <header
-        className="sticky top-0 z-50 bg-white py-[15px] px-4 w-full flex items-center justify-between 
-      text-[#050505] after:content-[''] after:absolute after:bottom-0 after:inset-x-4 after:h-[1px] after:bg-[#0000001a]"
-      >
-        <QcardsLogo />
-        <nav className="flex items-center gap-4">
-          <Link
-            href="/login"
-            className="rounded-md py-1 px-3 transition-colors hover:bg-gray-100"
-          >
-            <p className="text-base">Войти</p>
-          </Link>
-          <Link
-            href="/register"
-            className="flex items-center gap-2 rounded-md bg-[#121212] text-white font-medium py-1 px-3 shadow-xl transition-colors hover:bg-[#303035]"
-          >
-            <p className="text-base">Регистрация</p>
-          </Link>
-        </nav>
-      </header>
+      <HeroPageHeader />
       <main
         style={{ padding: "0 round(up, 7.22223%, .2rem)" }}
         className="w-full min-h-full h-auto mb-14 mt-0 mx-auto text-[#050505]"
@@ -61,13 +42,13 @@ export default function Home() {
               >
                 <Link
                   href="/login"
-                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 flex-grow transition-colors hover:bg-[#045ac3]"
+                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 flex-grow transition-colors active:bg-[#045ac3] lg:hover:bg-[#045ac3]"
                 >
                   <p>Войти</p>
                 </Link>
                 <Link
                   href="/register"
-                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#ebf5fe] text-[#087fe7] pt-[10px] px-5 pb-3 flex-grow transition-colors hover:bg-[#d6e1f5]"
+                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#ebf5fe] text-[#087fe7] pt-[10px] px-5 pb-3 flex-grow transition-colors active:bg-[#d6e1f5] lg:hover:bg-[#d6e1f5]"
                 >
                   <p className="text-base">Регистрация</p>
                 </Link>
@@ -95,7 +76,7 @@ export default function Home() {
                 alt="Hero image"
               />
             </div>
-            <section
+            <div
               style={{ gridColumn: "1 / span 12" }}
               className="my-0 mx-auto w-full"
             >
@@ -112,13 +93,12 @@ export default function Home() {
                       src="/desk-hero-image2.webp"
                       width={2560}
                       height={1600}
-                      priority
                       alt="Screenshots of the dashboard project showing desktop version"
                     />
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
           </section>
         </div>
       </main>
