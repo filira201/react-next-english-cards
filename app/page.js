@@ -93,6 +93,7 @@ export default function Home() {
                       src="/desk-hero-image2.webp"
                       width={2560}
                       height={1600}
+                      priority
                       alt="Screenshots of the dashboard project showing desktop version"
                     />
                   </div>
