@@ -4,10 +4,11 @@ export default async function Page() {
   const session = await auth();
 
   return (
-    <main className="border border-blue-800">
-      <p>Домашняя страница</p>
-      <h1>Имя: {session?.user?.name}</h1>
-      
+    <main className="text-[#050505]">
+      <p className="mb-6 text-2xl font-semibold text-[#1a1a1a] text-center">
+        Рады видеть вас, {session?.user?.name}
+      </p>
+      <div></div>
     </main>
   );
 }

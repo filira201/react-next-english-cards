@@ -44,7 +44,7 @@ export const fetchUserIdByEmail = async (email) => {
   }
 };
 
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE = 5;
 export const fetchFilteredThemesByEmail = async (query, currentPage, email) => {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
