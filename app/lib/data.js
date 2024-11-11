@@ -46,6 +46,8 @@ export const fetchUserIdByEmail = async (email) => {
 
 const ITEMS_PER_PAGE = 5;
 export const fetchFilteredThemesByEmail = async (query, currentPage, email) => {
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   let wordCapitalLetter;
@@ -102,5 +104,37 @@ export async function fetchThemesPagesByEmail(query, email) {
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch total number of themes.");
+  }
+}
+
+export async function fetchCountThemesByEmail(email) {
+  try {
+    const countThemes = await sql`SELECT COUNT(*)
+      FROM themes
+      JOIN users ON themes.user_id = users.id
+      WHERE users.email = ${email}
+    `;
+
+    return countThemes.rows[0];
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch count themes by email.");
+  }
+}
+
+export async function fetchCountWordsByEmail(email) {
+  try {
+    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    const countWords = await sql`SELECT COUNT(*)
+    FROM users
+    JOIN themes ON users.id = themes.user_id
+    JOIN words ON themes.id = words.theme_id
+    WHERE users.email = ${email};
+    `;
+
+    return countWords.rows[0];
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch count words by email.");
   }
 }
