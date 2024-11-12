@@ -1,4 +1,5 @@
 import { sql } from "@vercel/postgres";
+import { auth } from "@/auth";
 
 export const fetchThemeById = async (id) => {
   try {
@@ -124,7 +125,7 @@ export async function fetchCountThemesByEmail(email) {
 
 export async function fetchCountWordsByEmail(email) {
   try {
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const countWords = await sql`SELECT COUNT(*)
     FROM users
     JOIN themes ON users.id = themes.user_id
@@ -137,4 +138,17 @@ export async function fetchCountWordsByEmail(email) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch count words by email.");
   }
+}
+
+export async function fetchDataForInfoCards() {
+  const session = await auth();
+  const [countThemes, countWords] = await Promise.all([
+    fetchCountThemesByEmail(session?.user?.email),
+    fetchCountWordsByEmail(session?.user?.email),
+  ]);
+
+  return {
+    countThemes: countThemes.count,
+    countWords: countWords.count,
+  };
 }

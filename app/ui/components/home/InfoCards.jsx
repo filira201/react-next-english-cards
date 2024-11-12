@@ -1,6 +1,7 @@
 import {
   fetchCountThemesByEmail,
   fetchCountWordsByEmail,
+  fetchDataForInfoCards,
 } from "@/app/lib/data";
 import { auth } from "@/auth";
 
@@ -40,24 +41,12 @@ const iconsObj = {
 };
 
 const InfoCards = async () => {
-  const session = await auth();
-  const [countThemes, countWords] = await Promise.all([
-    fetchCountThemesByEmail(session?.user?.email),
-    fetchCountWordsByEmail(session?.user?.email),
-  ]);
+  const { countThemes, countWords } = await fetchDataForInfoCards();
 
   return (
     <>
-      <Card
-        title="Всего карточек"
-        value={countThemes.count}
-        type={"themesCount"}
-      />
-      <Card
-        title="Всего терминов"
-        value={countWords.count}
-        type={"wordsCount"}
-      />
+      <Card title="Всего карточек" value={countThemes} type={"themesCount"} />
+      <Card title="Всего терминов" value={countWords} type={"wordsCount"} />
     </>
   );
 };
