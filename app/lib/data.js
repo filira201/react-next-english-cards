@@ -139,16 +139,3 @@ export async function fetchCountWordsByEmail(email) {
     throw new Error("Failed to fetch count words by email.");
   }
 }
-
-export async function fetchDataForInfoCards() {
-  const session = await auth();
-  const [countThemes, countWords] = await Promise.all([
-    fetchCountThemesByEmail(session?.user?.email),
-    fetchCountWordsByEmail(session?.user?.email),
-  ]);
-
-  return {
-    countThemes: countThemes.count,
-    countWords: countWords.count,
-  };
-}
