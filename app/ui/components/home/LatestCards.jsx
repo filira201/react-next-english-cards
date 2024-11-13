@@ -7,13 +7,11 @@ const LatestCards = async () => {
   const themes = await fetchFilteredThemesByEmail("", 1, session?.user?.email);
 
   return (
-    <div>
-      <div className="grid p-10 gap-6 grid-cols-2">
-        {themes.map((theme) => {
-          return <Card key={theme.id} {...theme} />;
-        })}
-      </div>
-    </div>
+    <>
+      {themes.map((theme) => {
+        return <Card key={theme.id} {...theme} />;
+      })}
+    </>
   );
 };
 

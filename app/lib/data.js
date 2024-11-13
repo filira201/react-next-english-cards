@@ -1,5 +1,4 @@
 import { sql } from "@vercel/postgres";
-import { auth } from "@/auth";
 
 export const fetchThemeById = async (id) => {
   try {
@@ -125,7 +124,7 @@ export async function fetchCountThemesByEmail(email) {
 
 export async function fetchCountWordsByEmail(email) {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    // await new Promise((resolve) => setTimeout(resolve, 3000));
     const countWords = await sql`SELECT COUNT(*)
     FROM users
     JOIN themes ON users.id = themes.user_id

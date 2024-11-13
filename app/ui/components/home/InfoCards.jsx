@@ -65,7 +65,7 @@ const InfoCards = async () => {
 const Card = ({ title, value, type }) => {
   const icon = iconsObj[type];
   return (
-    <div className="grow bg-[#f7f7f5] rounded-lg shadow-custom p-2 text-[#1a1a1a]">
+    <div className="grow max-h-44 bg-[#f7f7f5] rounded-lg shadow-custom p-2 text-[#1a1a1a]">
       <div className="flex p-4">
         {icon}
         <h3 className="ml-2 text-sm font-medium">{title}</h3>
