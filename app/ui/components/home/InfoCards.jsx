@@ -3,6 +3,7 @@ import {
   fetchCountWordsByEmail,
 } from "@/app/lib/data";
 import { auth } from "@/auth";
+import TitleInfo from "./TitleInfo";
 
 const iconsObj = {
   themesCount: (
@@ -47,28 +48,31 @@ const InfoCards = async () => {
   ]);
 
   return (
-    <>
-      <Card
-        title="Всего карточек"
-        value={countThemes.count}
-        type={"themesCount"}
-      />
-      <Card
-        title="Всего терминов"
-        value={countWords.count}
-        type={"wordsCount"}
-      />
-    </>
+    <div className="py-9 px-6 grow border-[#e3e2e080] border-b lg:min-w-[250px] lg:border-b-0 lg:border-r lg:max-w-[500px]">
+      <TitleInfo iconType={"progress"} titleText={"Ваш прогресс"} />
+      <div className="flex gap-4 flex-col h-full">
+        <InfoCard
+          title="Всего карточек"
+          value={countThemes.count}
+          type={"themesCount"}
+        />
+        <InfoCard
+          title="Всего терминов"
+          value={countWords.count}
+          type={"wordsCount"}
+        />
+      </div>
+    </div>
   );
 };
 
-const Card = ({ title, value, type }) => {
+const InfoCard = ({ title, value, type }) => {
   const icon = iconsObj[type];
   return (
     <div className="grow max-h-44 bg-[#f7f7f5] rounded-lg shadow-custom p-2 text-[#1a1a1a]">
       <div className="flex p-4">
         {icon}
-        <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        <h4 className="ml-2 text-sm font-medium">{title}</h4>
       </div>
       <p className="px-4 py-8 text-center text-2xl truncate bg-white rounded-xl">
         {value}

@@ -29,7 +29,7 @@ const Quize = ({ data }) => {
         />
       ) : (
         <>
-          <button onClick={() => setStep(0)}>Начачть карточку занво</button>
+          <button onClick={() => setStep(0)}>Начачть карточку заново</button>
           <Link href="/home/cards">
             <p>Назад</p>
           </Link>

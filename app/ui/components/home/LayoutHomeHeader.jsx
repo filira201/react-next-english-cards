@@ -23,7 +23,3 @@ const LayoutHomeHeader = () => {
   );
 };
 export default LayoutHomeHeader;
-
-// <header className="flex-none shadow-[inset_-1px_0px_0px_0px_rgba(0,0,0,0.03)] bg-[#f7f7f5] w-64">
-//         <SideNav />
-//       </header>
