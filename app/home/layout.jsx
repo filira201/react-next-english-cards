@@ -6,7 +6,7 @@ export default function Layout({ children }) {
       <LayoutHomeHeader />
       <div
         style={{ padding: "48px  round(up, 7.22223%, .2rem)" }}
-        className="grow border overflow-y-auto"
+        className="grow overflow-y-auto"
       >
         {children}
       </div>

@@ -16,7 +16,7 @@ const LatestCards = async () => {
             return <Card key={theme.id} {...theme} />;
           })
         ) : (
-          <p className="mx-auto text-center my-3">У вас пока нет карточек</p>
+          <p className="mx-auto text-center mt-3">У вас пока нет карточек</p>
         )}
       </div>
     </div>

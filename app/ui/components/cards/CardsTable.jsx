@@ -8,10 +8,9 @@ const CardsTable = async ({ session, query, currentPage }) => {
     session?.email
   );
 
-
   return (
     <div>
-      <div className="grid p-10 gap-6 grid-cols-4">
+      <div className="bg-[#ffffffe6] py-4 px-3 flex flex-col gap-4 border rounded-xl mt-10">
         {themes.map((theme) => {
           return <Card key={theme.id} {...theme} />;
         })}

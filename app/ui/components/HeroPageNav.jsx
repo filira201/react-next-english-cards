@@ -1,14 +1,18 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
 
 const HeroPageNav = ({ isMenuOpen }) => {
   return (
     <nav
-      className={`${
-        isMenuOpen ? "flex" : "hidden"
-      } bg-white absolute left-0 right-0 top-full shadow-md p-4 flex-col items-center gap-4
-        lg:flex lg:flex-row lg:static lg:bg-transparent lg:p-0 lg:w-auto lg:shadow-none`}
+      className={clsx(
+        "bg-white absolute left-0 right-0 top-full shadow-md p-4 flex-col items-center gap-4 lg:flex lg:flex-row lg:static lg:bg-transparent lg:p-0 lg:w-auto lg:shadow-none",
+        {
+          flex: isMenuOpen,
+          hidden: !isMenuOpen,
+        }
+      )}
     >
       <Link
         href="/login"

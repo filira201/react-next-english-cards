@@ -7,9 +7,9 @@ export default async function Page() {
 
   return (
     <main className="text-[#050505]">
-      <p className="mb-8 text-3xl font-semibold text-[#1a1a1a] text-center">
+      <h1 className="mb-8 text-3xl font-semibold text-[#1a1a1a] text-center">
         Рады видеть вас, {session?.user?.name}
-      </p>
+      </h1>
       <div className="bg-[#ffffffe6] border w-full rounded-xl flex min-h-96 h-auto flex-col lg:flex-row">
         <InfoCards />
         <LatestCards />
