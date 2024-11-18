@@ -16,12 +16,11 @@ export const fetchThemeById = async (id) => {
 
 export const fetchWordsById = async (id) => {
   try {
-    const data = await sql`SELECT w.id, w.english, w.russian
+    const data = await sql`SELECT w.id, w.english, w.russian, t.name as themename
     FROM words w
     JOIN themes t ON w.theme_id = t.id
     WHERE t.id = ${id};
     `;
-
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);

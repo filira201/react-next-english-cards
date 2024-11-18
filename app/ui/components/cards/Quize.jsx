@@ -6,25 +6,31 @@ import Link from "next/link";
 
 const Quize = ({ data }) => {
   const [step, setStep] = useState(0);
-  const [languageIsEnglish, setLanguageIsEnglish] = useState(true);
+  const [isFrontSide, setIsFrontSide] = useState(true);
 
-  const onClickCard = () => {
+  const onClickIncrementStep = () => {
     setStep(step + 1);
-    setLanguageIsEnglish(true);
+    setIsFrontSide(true);
   };
 
-  const onClickWord = (isEnglish) => {
-    setLanguageIsEnglish(isEnglish);
+  const onClickDecrementStep = () => {
+    setStep(step - 1);
+    setIsFrontSide(true);
+  };
+
+  const onClickWord = (isFront) => {
+    setIsFrontSide(isFront);
   };
 
   return (
-    <div className="w-[500px] max-h-[90vh] overflow-y-auto rounded-[30px] p-10 bg-white">
+    <div className="w-[90%] max-w-[1000px] overflow-y-auto rounded-xl p-10 border">
       {step !== data.length ? (
         <Game
           data={data}
           step={step}
-          onClickCard={onClickCard}
-          languageIsEnglish={languageIsEnglish}
+          onClickIncrementStep={onClickIncrementStep}
+          onClickDecrementStep={onClickDecrementStep}
+          isFrontSide={isFrontSide}
           onClickWord={onClickWord}
         />
       ) : (

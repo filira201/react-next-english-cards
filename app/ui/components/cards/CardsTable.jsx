@@ -10,7 +10,7 @@ const CardsTable = async ({ session, query, currentPage }) => {
 
   return (
     <div>
-      <div className="bg-[#ffffffe6] py-4 px-3 flex flex-col gap-4 border rounded-xl mt-10">
+      <div className="bg-[#ffffffe6] py-4 px-3 flex flex-col gap-4 border rounded-xl mt-5 lg:mt-10">
         {themes.map((theme) => {
           return <Card key={theme.id} {...theme} />;
         })}
