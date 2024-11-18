@@ -17,38 +17,75 @@ const Game = ({
       <div className="h-[10px] rounded-xl bg-[#e8e8e8] mb-[25px]">
         <div
           style={{ width: `${percentage}%` }}
-          className="h-full rounded-[30px] w-[80%] transition-all ease-in-out duration-300 bg-[#12E730]"
+          className="h-full rounded-xl w-4/5 transition-all duration-300 bg-[#12E730]"
         ></div>
       </div>
-      <div className="border break-words">
-        {isFrontSide ? (
-          <h2
-            className="cursor-pointer text-3xl text-center select-none"
-            onClick={() => onClickWord(false)}
+      <div className="flex flex-col items-center gap-10">
+        <div className="bg-[#f7f7f5] transition-colors rounded-lg px-2 py-2 min-w-[80%] max-w-[90%] hover:bg-[#e3e2e080] sm:min-w-[50%]">
+          {isFrontSide ? (
+            <p
+              className="cursor-pointer text-3xl text-center break-words"
+              onClick={() => onClickWord(false)}
+            >
+              {data[step].english}
+            </p>
+          ) : (
+            <p
+              className="cursor-pointer text-3xl text-center break-words"
+              onClick={() => onClickWord(true)}
+            >
+              {data[step].russian}
+            </p>
+          )}
+        </div>
+        <div className="flex items-center justify-center gap-5 xm:gap-10">
+          <button
+            className={clsx(
+              "flex h-10 w-10 items-center justify-center rounded-md border transition-colors hover:bg-gray-100",
+              { "pointer-events-none text-gray-300": step === 0 }
+            )}
+            disabled={step === 0}
+            onClick={onClickDecrementStep}
           >
-            {data[step].english}
-          </h2>
-        ) : (
-          <h2
-            className="cursor-pointer text-3xl text-center select-none"
-            onClick={() => onClickWord(true)}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+              />
+            </svg>
+          </button>
+          <p>
+            {step + 1} из {data.length}
+          </p>
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded-md border transition-colors hover:bg-gray-100"
+            onClick={onClickIncrementStep}
           >
-            {data[step].russian}
-          </h2>
-        )}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-
-      <button
-        className={clsx("mr-4", { "cursor-not-allowed": step === 0 })}
-        disabled={step === 0}
-        onClick={onClickDecrementStep}
-      >
-        Назад
-      </button>
-      <button onClick={onClickIncrementStep}>Далее</button>
-      <p>
-        {step + 1} из {data.length}
-      </p>
     </>
   );
 };
