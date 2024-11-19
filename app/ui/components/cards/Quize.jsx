@@ -38,7 +38,7 @@ const Quize = ({ data }) => {
           <p className="text-xl font-medium text-center">Карточка завершена</p>
           <div className="w-full flex flex-col gap-4 sm:gap-0 sm:flex-row sm:justify-around">
             <button
-              className="font-medium flex items-center justify-center rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 transition-colors [@media(hover:hover){&:hover}]:bg-[#045ac3] [@media(hover:none){&:active}]:bg-[#045ac3] xm:min-w-48 "
+              className="font-medium flex items-center justify-center rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 transition-colors [@media(hover:hover){&:hover}]:bg-[#045ac3] [@media(hover:none){&:active}]:bg-[#045ac3] xm:min-w-48"
               onClick={() => setStep(0)}
             >
               Пройти заново

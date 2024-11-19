@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { updateCard } from "@/app/lib/actions";
 import { v4 as uuidv4 } from "uuid";
-import Word from "./Word";
+import Word from "./Termin";
 import clsx from "clsx";
 import { useState } from "react";
 

@@ -1,6 +1,6 @@
 "use client";
 
-const Word = (props) => {
+const Termin = (props) => {
   return (
     <div className="mb-4">
       <div className="flex justify-between items-center">
@@ -63,4 +63,4 @@ const Word = (props) => {
   );
 };
 
-export default Word;
+export default Termin;
