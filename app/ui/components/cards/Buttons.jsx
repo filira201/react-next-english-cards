@@ -5,7 +5,7 @@ export function CreateCard() {
   return (
     <Link
       href="/home/cards/create"
-      className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500"
+      className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors [@media(hover:hover){&:hover}]:bg-blue-500 [@media(hover:none){&:active}]:bg-blue-500"
     >
       <span className="hidden md:block">Создать карточку</span>
       <svg
@@ -30,7 +30,7 @@ export function UpdateCard({ id }) {
   return (
     <Link
       href={`/home/cards/${id}/edit`}
-      className="rounded-md border p-2 text-[#087fe7] transition-colors hover:bg-gray-100"
+      className="rounded-md border p-2 text-[#087fe7] transition-colors [@media(hover:hover){&:hover}]:bg-gray-100 [@media(hover:none){&:active}]:bg-gray-100"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@ export function DeleteCard({ id }) {
 
   return (
     <form action={deleteCardWithId}>
-      <button className="rounded-md border p-2 text-red-600 transition-colors hover:bg-gray-100">
+      <button className="rounded-md border p-2 text-red-600 transition-colors [@media(hover:hover){&:hover}]:bg-gray-100 [@media(hover:none){&:active}]:bg-gray-100">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

@@ -21,7 +21,7 @@ const Game = ({
         ></div>
       </div>
       <div className="flex flex-col items-center gap-10">
-        <div className="bg-[#f7f7f5] transition-colors rounded-lg px-2 py-2 min-w-[80%] max-w-[90%] hover:bg-[#e3e2e080] sm:min-w-[50%]">
+        <div className="bg-[#f7f7f5] transition-colors rounded-lg px-2 py-2 min-w-[80%] max-w-[90%] [@media(hover:hover){&:hover}]:bg-[#e3e2e080] [@media(hover:none){&:active}]:bg-[#e3e2e080] sm:min-w-[50%]">
           {isFrontSide ? (
             <p
               className="cursor-pointer text-3xl text-center break-words"
@@ -41,7 +41,7 @@ const Game = ({
         <div className="flex items-center justify-center gap-5 xm:gap-10">
           <button
             className={clsx(
-              "flex h-10 w-10 items-center justify-center rounded-md border transition-colors hover:bg-gray-100",
+              "flex h-10 w-10 items-center justify-center rounded-md border transition-colors [@media(hover:hover){&:hover}]:bg-gray-100 [@media(hover:none){&:active}]:bg-gray-100",
               { "pointer-events-none text-gray-300": step === 0 }
             )}
             disabled={step === 0}
@@ -66,7 +66,7 @@ const Game = ({
             {step + 1} из {data.length}
           </p>
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-md border transition-colors hover:bg-gray-100"
+            className="flex h-10 w-10 items-center justify-center rounded-md border transition-colors [@media(hover:hover){&:hover}]:bg-gray-100 [@media(hover:none){&:active}]:bg-gray-100"
             onClick={onClickIncrementStep}
           >
             <svg

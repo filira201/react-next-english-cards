@@ -42,13 +42,13 @@ export default function Home() {
               >
                 <Link
                   href="/login"
-                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 flex-grow transition-colors active:bg-[#045ac3] lg:hover:bg-[#045ac3]"
+                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 flex-grow transition-colors [@media(hover:hover){&:hover}]:bg-[#045ac3] [@media(hover:none){&:active}]:bg-[#045ac3]"
                 >
                   <p>Войти</p>
                 </Link>
                 <Link
                   href="/register"
-                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#ebf5fe] text-[#087fe7] pt-[10px] px-5 pb-3 flex-grow transition-colors active:bg-[#d6e1f5] lg:hover:bg-[#d6e1f5]"
+                  className="min-w-36 flex items-center justify-center font-medium rounded-lg bg-[#ebf5fe] text-[#087fe7] pt-[10px] px-5 pb-3 flex-grow transition-colors [@media(hover:hover){&:hover}]:bg-[#d6e1f5] [@media(hover:none){&:active}]:bg-[#d6e1f5]"
                 >
                   <p className="text-base">Регистрация</p>
                 </Link>

@@ -58,7 +58,7 @@ const NavLinks = () => {
             key={link.name}
             href={link.href}
             className={clsx(
-              "flex flex-none justify-center p-2 px-3 items-center gap-2 h-[48px] rounded-md text-sm font-medium transition-colors hover:bg-[#00000008] hover:text-[#1d1b16] lg:justify-start",
+              "flex flex-none justify-center p-2 px-3 items-center gap-2 h-[48px] rounded-md text-sm font-medium transition-colors [@media(hover:hover){&:hover}]:bg-[#00000008] [@media(hover:none){&:active}]:bg-[#00000008] [@media(hover:hover){&:hover}]:text-[#1d1b16] [@media(hover:none){&:active}]:text-[#1d1b16] lg:justify-start",
               {
                 "bg-[#00000008] text-[#1d1b16]": pathname === link.href,
               }

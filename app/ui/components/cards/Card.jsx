@@ -5,7 +5,7 @@ const Card = ({ id, name }) => {
   return (
     <div className="flex items-center shadow-custom rounded-md px-2 py-2 gap-6">
       <Link
-        className="bg-[#f7f7f5] rounded-lg grow overflow-hidden transition-colors hover:bg-[#e3e2e080]"
+        className="bg-[#f7f7f5] rounded-lg grow overflow-hidden transition-colors [@media(hover:hover){&:hover}]:bg-[#e3e2e080] [@media(hover:none){&:active}]:bg-[#e3e2e080]"
         href={`/home/cards/${id}/card`}
       >
         <div className="w-full h-16 flex justify-center items-center overflow-hidden">

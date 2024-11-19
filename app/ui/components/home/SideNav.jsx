@@ -31,7 +31,7 @@ const SideNav = ({ isMenuOpen, toggleMenu }) => {
         <div className="hidden lg:block h-auto w-full grow rounded-md shadow-custom bg-white"></div>
         <form action={singOutOfAccount}>
           <button
-            className="flex h-[48px] w-full items-center justify-center gap-2 shadow-custom rounded-md bg-white p-2 px-3 text-sm font-medium transition-colors text-[#050505] hover:hover:bg-[#00000008] lg:justify-start"
+            className="flex h-[48px] w-full items-center justify-center gap-2 shadow-custom rounded-md bg-white p-2 px-3 text-sm font-medium transition-colors text-[#050505] [@media(hover:hover){&:hover}]:bg-[#00000008] [@media(hover:none){&:active}]:bg-[#00000008] lg:justify-start"
             type="submit"
           >
             <svg
