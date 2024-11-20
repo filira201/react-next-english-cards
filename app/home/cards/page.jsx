@@ -18,12 +18,12 @@ export default async function Page(props) {
   );
 
   return (
-    <div className="w-full">
-      <div className="flex w-full items-center justify-between">
-        <h1 className="text-2xl">Карточки для изучения</h1>
-      </div>
-      <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Search cards..." />
+    <main className="w-full text-[#050505]">
+      <h1 className="mb-6 text-2xl font-semibold text-[#1a1a1a]">
+        Ваши карточки
+      </h1>
+      <div className="flex items-center justify-between gap-2">
+        <Search placeholder="Поиск карточек..." />
         <CreateCard />
       </div>
       {totalThemes > 0 ? (
@@ -38,8 +38,8 @@ export default async function Page(props) {
           </div>
         </>
       ) : (
-        <h2>У вас пока что нет своих карточек</h2>
+        <p className="mx-auto text-center mt-3">Карточки не найдены</p>
       )}
-    </div>
+    </main>
   );
 }

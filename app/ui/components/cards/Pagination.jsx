@@ -65,7 +65,8 @@ function PaginationNumber({ page, href, isActive, position }) {
       "rounded-l-md": position === "first" || position === "single",
       "rounded-r-md": position === "last" || position === "single",
       "z-10 bg-blue-600 border-blue-600 text-white": isActive,
-      "hover:bg-gray-100": !isActive && position !== "middle",
+      "[@media(hover:hover){&:hover}]:bg-gray-100 [@media(hover:none){&:active}]:bg-gray-100":
+        !isActive && position !== "middle",
       "text-gray-300": position === "middle",
     }
   );
@@ -84,13 +85,44 @@ function PaginationArrow({ href, direction, isDisabled }) {
     "flex h-10 w-10 items-center justify-center rounded-md border",
     {
       "pointer-events-none text-gray-300": isDisabled,
-      "hover:bg-gray-100": !isDisabled,
+      "[@media(hover:hover){&:hover}]:bg-gray-100 [@media(hover:none){&:active}]:bg-gray-100": !isDisabled,
       "mr-2 md:mr-4": direction === "left",
       "ml-2 md:ml-4": direction === "right",
     }
   );
 
-  const icon = direction === "left" ? <span>left</span> : <span>right</span>;
+  const icon =
+    direction === "left" ? (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="size-4"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+        />
+      </svg>
+    ) : (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="size-4"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+        />
+      </svg>
+    );
 
   return isDisabled ? (
     <div className={className}>{icon}</div>

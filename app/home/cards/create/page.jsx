@@ -8,8 +8,10 @@ export default async function Page() {
   const userIdObject = await fetchUserIdByEmail(session?.user?.email);
 
   return (
-    <main className="p-6">
-      <h1 className="text-2xl">Создание карточки</h1>
+    <main className="text-[#050505]">
+      <h1 className="text-2xl font-semibold text-[#1a1a1a] mb-6">
+        Создание карточки
+      </h1>
       <CreateFrom userId={userIdObject.id} />
     </main>
   );

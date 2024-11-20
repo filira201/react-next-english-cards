@@ -1,6 +1,8 @@
 "use server";
 
 import { signIn } from "@/auth";
+import { signOut } from "@/auth";
+
 import { AuthError } from "next-auth";
 import { v4 as uuidv4 } from "uuid";
 import { sql } from "@vercel/postgres";
@@ -114,8 +116,6 @@ export const updateCard = async (editedTheme, editedWords, words, formData) => {
     console.error("Error update theme and words:", error);
   }
 
-  // revalidatePath(`/cards/${editedTheme.id}/edit`);
-  // revalidatePath(`/cards/${editedTheme.id}/card`);
   revalidatePath("/home/cards");
   redirect("/home/cards");
 };
@@ -130,7 +130,7 @@ export const deleteCard = async (id) => {
     console.error("Error delete theme and words:", error);
   }
 
-  revalidatePath("/cards");
+  revalidatePath("/home/cards");
 };
 
 export async function authenticate(prevState, formData) {
@@ -147,6 +147,10 @@ export async function authenticate(prevState, formData) {
     }
     throw error;
   }
+}
+
+export async function singOutOfAccount() {
+  await signOut();
 }
 
 const RegisterUser = z.object({

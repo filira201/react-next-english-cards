@@ -4,7 +4,7 @@ import Link from "next/link";
 import { createCard } from "@/app/lib/actions";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Word from "./Word";
+import Termin from "./Termin";
 import clsx from "clsx";
 
 export default function CreateFrom({ userId }) {
@@ -41,13 +41,13 @@ export default function CreateFrom({ userId }) {
   const createCardWithWords = createCard.bind(null, userId, words);
 
   return (
-    <form className="my-5" action={createCardWithWords}>
-      <div className="rounded-md bg-gray-50 p-4">
+    <form action={createCardWithWords}>
+      <div className="rounded-xl border bg-[#ffffffe6] p-4 md:p-6">
         {/* Theme Name Start */}
-        <div className="mb-4">
+        <div className="mb-8">
           <label
             htmlFor="card-theme"
-            className="mb-2 block text-base font-medium"
+            className="mb-2 block text-lg font-medium"
           >
             Введите тему карточки
           </label>
@@ -55,59 +55,72 @@ export default function CreateFrom({ userId }) {
             <input
               type="text"
               name="cardTheme"
-              placeholder="Enter Card Theme"
+              placeholder="Тема карточки"
               id="card-theme"
-              className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+              className="peer block w-full rounded-md border py-2 pl-10 text-sm outline-2 placeholder:text-[#787774]"
               required
             />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#787774]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+              />
+            </svg>
           </div>
         </div>
         {/* Theme Name End */}
-        {words.length === 0 && (
-          <h3 className="text-center">
-            В вашей карточке должно быть минимум одно слово
-          </h3>
+        {words.length === 0 ? (
+          <p className="mx-auto text-center">
+            Добавьте хотя бы один термин, чтобы создать карточку
+          </p>
+        ) : (
+          words.map((word, index) => {
+            return (
+              <Termin
+                key={word.id}
+                index={index}
+                onChangeEnglishWord={onChangeEnglishWord}
+                onChangeRussianWord={onChangeRussianWord}
+                onDeleteWord={onDeleteWord}
+                word={word}
+              />
+            );
+          })
         )}
-
-        {/* Words Start */}
-        {words.map((word, index) => {
-          return (
-            <Word
-              key={word.id}
-              index={index}
-              onChangeEnglishWord={onChangeEnglishWord}
-              onChangeRussianWord={onChangeRussianWord}
-              onDeleteWord={onDeleteWord}
-              word={word}
-            />
-          );
-        })}
 
         {/* Words End */}
         <button
           onClick={() =>
             setWords([...words, { id: uuidv4(), english: "", russian: "" }])
           }
-          className=" bg-sky-500  text-white p-1 rounded-md hover:bg-sky-600 text-sm"
+          className="mt-4 mx-auto font-medium flex items-center justify-center rounded-lg bg-[#4CAF50] text-white pt-2 px-5 pb-[10px] transition-colors [@media(hover:hover){&:hover}]:bg-[#28A745] [@media(hover:none){&:active}]:bg-[#28A745]"
           type="button"
         >
-          Добавить слово
+          Добавить термин
         </button>
       </div>
-      <div className="mt-6 flex justify-end gap-4">
+      <div className="mt-6 flex justify-center flex-col gap-2 md:gap-4 md:flex-row md:justify-end">
         <Link
           href="/home/cards"
-          className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+          className="select-none font-medium flex items-center justify-center rounded-lg bg-[#ebf5fe] text-[#087fe7] pt-[10px] px-5 pb-3 transition-colors [@media(hover:hover){&:hover}]:bg-[#d6e1f5] [@media(hover:none){&:active}]:bg-[#d6e1f5] xm:min-w-48"
         >
           Отмена
         </Link>
         <button
-          disabled={words.length === 0 ? true : false}
+          disabled={words.length === 0}
           type="submit"
           className={clsx(
-            "flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
+            "select-none font-medium flex items-center justify-center rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 transition-colors [@media(hover:hover){&:hover}]:bg-[#045ac3] [@media(hover:none){&:active}]:bg-[#045ac3] xm:min-w-48",
             {
-              "opacity-30 cursor-not-allowed": words.length === 0,
+              "opacity-30 pointer-events-none": words.length === 0,
             }
           )}
         >
