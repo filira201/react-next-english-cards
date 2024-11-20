@@ -4,10 +4,7 @@ export default function Layout({ children }) {
   return (
     <div className="flex h-screen flex-col overflow-hidden lg:flex-row">
       <LayoutHomeHeader />
-      <div
-        style={{ padding: "48px  round(up, 7.22223%, .2rem)" }}
-        className="grow overflow-y-auto"
-      >
+      <div className="grow overflow-y-auto py-12 px-[round(up,_1.22223%,_.2rem)] sm:px-[round(up,_3.22223%,_.2rem)]">
         {children}
       </div>
     </div>

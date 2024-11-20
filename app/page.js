@@ -6,10 +6,7 @@ export default function Home() {
   return (
     <>
       <HeroPageHeader />
-      <main
-        style={{ padding: "0 round(up, 7.22223%, .2rem)" }}
-        className="w-full min-h-full h-auto mb-14 mt-0 mx-auto text-[#050505]"
-      >
+      <main className="w-full min-h-full h-auto mb-14 mt-0 mx-auto p-[0px_round(up,_7.22223%,_.2rem)] text-[#050505]">
         <div className="w-full m-auto max-w-[1252px] felx flex-col gap-36">
           <section
             className="
