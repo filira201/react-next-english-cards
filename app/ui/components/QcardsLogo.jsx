@@ -1,6 +1,6 @@
 const QcardsLogo = () => {
   return (
-    <div className="flex items-center text-[#050505] select-none">
+    <div className="flex items-center select-none">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

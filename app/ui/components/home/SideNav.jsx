@@ -10,7 +10,7 @@ const SideNav = ({ isMenuOpen, toggleMenu }) => {
   return (
     <div className="flex flex-row py-0 px-4 items-center lg:items-stretch lg:px-2 lg:py-4 lg:flex-col lg:h-full">
       <div className="grow lg:grow-0 lg:mb-2 lg:flex lg:h-40 lg:items-end lg:justify-start lg:rounded-md lg:bg-white lg:shadow-custom lg:p-4">
-        <div className="lg:w-40">
+        <div className="text-[#050505] lg:w-40">
           <QcardsLogo />
         </div>
       </div>

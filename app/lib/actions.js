@@ -178,14 +178,14 @@ export async function register(prevState, formData) {
 
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
-    return "Missing Fields. Failed to Create Account.";
+    return "Не удалось создать учетную запись";
   }
 
   const { name, email, password, confirmPassword } = validatedFields.data;
 
   // Check if passwords match
   if (password !== confirmPassword) {
-    return "Passwords don't match.";
+    return "Пароли не совпадают";
   }
 
   const hashedPassword = bcrypt.hashSync(password, 10);
