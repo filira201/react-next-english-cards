@@ -42,7 +42,7 @@ export default function CreateFrom({ userId }) {
 
   return (
     <form action={createCardWithWords}>
-      <div className="rounded-xl border bg-[#ffffffe6] p-4 md:p-6">
+      <div className="rounded-xl border bg-[#ffffffe6] py-4 px-2 md:p-6">
         {/* Theme Name Start */}
         <div className="mb-8">
           <label
