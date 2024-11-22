@@ -5,7 +5,8 @@ import { register } from "@/app/lib/actions";
 import Link from "next/link";
 
 export default function RegisterForm() {
-  const [errorMessage, formAction, isPending] = useActionState(register, null);
+  const initialState = { message: null, errors: {} };
+  const [state, formAction, isPending] = useActionState(register, initialState);
 
   return (
     <form action={formAction} className="space-y-3">
@@ -26,8 +27,10 @@ export default function RegisterForm() {
                 type="text"
                 name="name"
                 autoComplete="true"
-                placeholder="Введите имя"
                 required
+                maxLength={500}
+                placeholder="Введите имя"
+                aria-describedby="user-name-error"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +47,14 @@ export default function RegisterForm() {
                 />
               </svg>
             </div>
+            <div id="user-name-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.name &&
+                state.errors.name.map((error) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
+            </div>
           </div>
           <div>
             <label
@@ -59,8 +70,9 @@ export default function RegisterForm() {
                 type="email"
                 name="email"
                 autoComplete="true"
-                placeholder="Введите адрес почты"
                 required
+                placeholder="Введите адрес почты"
+                aria-describedby="user-email-error"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,6 +89,14 @@ export default function RegisterForm() {
                 />
               </svg>
             </div>
+            <div id="user-email-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.email &&
+                state.errors.email.map((error) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
+            </div>
           </div>
           <div>
             <label
@@ -91,9 +111,10 @@ export default function RegisterForm() {
                 id="password"
                 type="password"
                 name="password"
-                placeholder="Введите пароль"
                 required
                 minLength={6}
+                placeholder="Введите пароль"
+                aria-describedby="user-password-error"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +131,14 @@ export default function RegisterForm() {
                 />
               </svg>
             </div>
+            <div id="user-password-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.password &&
+                state.errors.password.map((error) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
+            </div>
           </div>
           <div>
             <label
@@ -124,9 +153,10 @@ export default function RegisterForm() {
                 id="confirm-password"
                 type="password"
                 name="confirm-password"
-                placeholder="Введите пароль повторно"
                 required
                 minLength={6}
+                placeholder="Введите пароль повторно"
+                aria-describedby="user-confirm-password-error"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -142,6 +172,18 @@ export default function RegisterForm() {
                   d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z"
                 />
               </svg>
+            </div>
+            <div
+              id="user-confirm-password-error"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {state.errors?.confirmPassword &&
+                state.errors.confirmPassword.map((error) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
             </div>
           </div>
         </div>
@@ -158,16 +200,10 @@ export default function RegisterForm() {
             <span className="text-[#087fe7] underline">Войти</span>
           </Link>
         </p>
-        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          {errorMessage && (
-            <>
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </>
-          )}
+        <div className="space-x-1" aria-live="polite" aria-atomic="true">
+          {state.message ? (
+            <p className="mt-2 text-sm text-red-500">{state.message}</p>
+          ) : null}
         </div>
       </div>
     </form>

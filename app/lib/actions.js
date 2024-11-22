@@ -10,8 +10,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import bcrypt from "bcrypt";
-import { CreateCard } from "./schemes";
-import { UpdateCard } from "./schemes";
+import { CreateCard, UpdateCard, RegisterUser } from "./schemes";
 
 export const createCard = async (userId, words, prevState, formData) => {
   const validatedFields = CreateCard.safeParse({
@@ -170,9 +169,9 @@ export async function authenticate(prevState, formData) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return "Invalid credentials.";
+          return "Неверные учетные данные";
         default:
-          return "Something went wrong.";
+          return "Что-то пошло не так";
       }
     }
     throw error;
@@ -183,21 +182,6 @@ export async function singOutOfAccount() {
   await signOut();
 }
 
-const RegisterUser = z.object({
-  name: z.string({
-    invalid_type_error: "Please enter your name.",
-  }),
-  email: z.string({
-    invalid_type_error: "Please enter an email address.",
-  }),
-  password: z.string({
-    invalid_type_error: "Please enter a password.",
-  }),
-  confirmPassword: z.string({
-    invalid_type_error: "Please confirm your password.",
-  }),
-});
-
 export async function register(prevState, formData) {
   const validatedFields = RegisterUser.safeParse({
     name: formData.get("name"),
@@ -206,17 +190,14 @@ export async function register(prevState, formData) {
     confirmPassword: formData.get("confirm-password"),
   });
 
-  // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
-    return "Не удалось создать учетную запись";
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Не удалось создать учетную запись",
+    };
   }
 
-  const { name, email, password, confirmPassword } = validatedFields.data;
-
-  // Check if passwords match
-  if (password !== confirmPassword) {
-    return "Пароли не совпадают";
-  }
+  const { name, email, password } = validatedFields.data;
 
   const hashedPassword = bcrypt.hashSync(password, 10);
   const id = uuidv4();

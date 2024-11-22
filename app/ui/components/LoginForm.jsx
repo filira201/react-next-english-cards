@@ -28,9 +28,9 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
+                required
                 autoComplete="true"
                 placeholder="Введите адрес почты"
-                required
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,9 +61,9 @@ export default function LoginForm() {
                 id="password"
                 type="password"
                 name="password"
-                placeholder="Введите пароль"
                 required
                 minLength={6}
+                placeholder="Введите пароль"
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"

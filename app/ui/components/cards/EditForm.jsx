@@ -4,9 +4,9 @@ import Link from "next/link";
 import { updateCard } from "@/app/lib/actions";
 import { v4 as uuidv4 } from "uuid";
 import Termin from "./Termin";
-import clsx from "clsx";
 import { useState } from "react";
 import { useActionState } from "react";
+import clsx from "clsx";
 
 export default function EditForm({ editedTheme, editedWords }) {
   const editedWordsCopy = [...editedWords];
@@ -70,6 +70,8 @@ export default function EditForm({ editedTheme, editedWords }) {
               name="cardTheme"
               placeholder="Тема карточки"
               id="card-theme"
+              required
+              maxLength={500}
               className="peer block w-full rounded-md border py-2 pl-10 text-sm outline-2 placeholder:text-[#787774]"
               aria-describedby="card-theme-error"
               defaultValue={editedTheme.name}
@@ -152,10 +154,16 @@ export default function EditForm({ editedTheme, editedWords }) {
           Отмена
         </Link>
         <button
+          disabled={words.length === 0}
           type="submit"
-          className="select-none font-medium flex items-center justify-center rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 transition-colors [@media(hover:hover){&:hover}]:bg-[#045ac3] [@media(hover:none){&:active}]:bg-[#045ac3] xm:min-w-48"
+          className={clsx(
+            "select-none font-medium flex items-center justify-center rounded-lg bg-[#0582ff] text-white pt-[10px] px-5 pb-3 transition-colors [@media(hover:hover){&:hover}]:bg-[#045ac3] [@media(hover:none){&:active}]:bg-[#045ac3] xm:min-w-48",
+            {
+              "opacity-30 pointer-events-none": words.length === 0,
+            }
+          )}
         >
-          Создать карточку
+          Редактировать карточку
         </button>
       </div>
     </form>

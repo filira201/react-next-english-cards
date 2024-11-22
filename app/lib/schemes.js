@@ -38,3 +38,29 @@ export const UpdateCard = FormSchema.omit({
   userId: true,
   date: true,
 });
+
+export const RegisterUser = z
+  .object({
+    name: z.string().min(1, { message: "Пожалуйста, введите имя" }).max(500, {
+      message: "Имя не должно превышать 500 символов",
+    }),
+    email: z
+      .string()
+      .email({ message: "Некорректный E-mail" })
+      .min(1, { message: "Пожалуйста, введите почту" }),
+    password: z
+      .string()
+      .min(6, { message: "Пароль должен быть не менее 6 символов" }),
+    confirmPassword: z
+      .string()
+      .min(6, { message: "Пароль должен быть не менее 6 символов" }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Пароли не совпадают",
+  });
+
+export const AuthUser = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});
