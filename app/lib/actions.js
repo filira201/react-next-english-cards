@@ -10,19 +10,33 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import bcrypt from "bcrypt";
+import { CreateCard } from "./schemes";
+import { UpdateCard } from "./schemes";
 
-export const createCard = async (userId, words, formData) => {
-  const rawFormData = Object.fromEntries(formData.entries());
+export const createCard = async (userId, words, prevState, formData) => {
+  const validatedFields = CreateCard.safeParse({
+    cardTheme: formData.get("cardTheme"),
+    words: words,
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Не удалось создать карточку",
+    };
+  }
 
   const themeId = uuidv4();
   try {
     await sql`
       INSERT INTO themes (id, user_id, create_date, name)
-      VALUES (${themeId}, ${userId}, ${new Date()}, ${rawFormData.cardTheme})
+      VALUES (${themeId}, ${userId}, ${new Date()}, ${
+      validatedFields.data.cardTheme
+    })
     `;
 
     await Promise.all(
-      words.map(
+      validatedFields.data.words.map(
         (word) =>
           sql`
           INSERT INTO words (id, theme_id, english, russian)
@@ -39,14 +53,30 @@ export const createCard = async (userId, words, formData) => {
   redirect("/home/cards");
 };
 
-export const updateCard = async (editedTheme, editedWords, words, formData) => {
-  const rawFormData = Object.fromEntries(formData.entries());
+export const updateCard = async (
+  editedTheme,
+  editedWords,
+  words,
+  prevState,
+  formData
+) => {
+  const validatedFields = UpdateCard.safeParse({
+    cardTheme: formData.get("cardTheme"),
+    words: words,
+  });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Не удалось обновить карточку",
+    };
+  }
 
   try {
-    if (rawFormData.cardTheme !== editedTheme.name) {
+    if (validatedFields.data.cardTheme !== editedTheme.name) {
       await sql`
         UPDATE themes
-        SET name = ${rawFormData.cardTheme}
+        SET name = ${validatedFields.data.cardTheme}
         WHERE id = ${editedTheme.id}
       `;
     }
@@ -59,7 +89,7 @@ export const updateCard = async (editedTheme, editedWords, words, formData) => {
     const wordsToUpdate = [];
     const newWordIds = new Set();
 
-    words.forEach((word) => {
+    validatedFields.data.words.forEach((word) => {
       newWordIds.add(word.id);
 
       if (!existingWordsMap.has(word.id)) {

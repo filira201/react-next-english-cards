@@ -3,7 +3,7 @@
 const Termin = (props) => {
   return (
     <div className="mb-4 border rounded-md p-2 flex flex-col gap-4">
-      <p className="text-center font-medium">Карточка №{props.index + 1}</p>
+      <p className="text-center font-medium">Термин №{props.index + 1}</p>
       <div className="flex flex-col gap-4 xl:flex-row xl:gap-10">
         <div className="grow flex flex-col gap-2">
           <label
@@ -25,7 +25,6 @@ const Termin = (props) => {
               })
             }
             className="rounded-md border border-gray-200 p-2 text-sm placeholder:text-gray-500"
-            required
           ></textarea>
         </div>
 
@@ -49,7 +48,6 @@ const Termin = (props) => {
               })
             }
             className="rounded-md border border-gray-200 p-2 text-sm placeholder:text-gray-500"
-            required
           ></textarea>
         </div>
       </div>
