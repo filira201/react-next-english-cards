@@ -61,7 +61,7 @@ export default function Home() {
               "
             >
               <Image
-                src="/hero-image.png"
+                src="/qcards-image.png"
                 width={1024}
                 height={1024}
                 style={{
@@ -70,28 +70,28 @@ export default function Home() {
                   objectFit: "cover",
                 }}
                 priority
-                alt="Hero image"
+                alt="QCards image"
               />
             </div>
-            <div
-              style={{ gridColumn: "1 / span 12" }}
-              className="my-0 mx-auto w-full"
-            >
-              <div className="grid grid-cols-12 auto-rows-min gap-x-6 w-full">
-                <div style={{ gridColumn: "span 12" }}>
-                  <div
-                    style={{
-                      boxShadow:
-                        " 0px 4px 18px #0000000a, 0px 2.025px 7.84688px rgba(0, 0, 0, .027), 0px 0.8px 2.925px #00000005, 0px 0.175px 1.04062px rgba(0, 0, 0, .013)",
-                    }}
-                    className="rounded-xl border border-[#0000001a] overflow-hidden w-full h-auto block relative my-0 mx-auto"
-                  >
+            <div className="my-0 mx-auto w-full grid col-start-1 col-end-13">
+              <div className="grid grid-cols-12 auto-rows-min w-full">
+                <div className="col-[span_12]">
+                  <div className="rounded-xl border border-[#0000001a] overflow-hidden w-full h-auto block relative my-0 mx-auto shadow-[0px_4px_18px_#0000000a,_0px_2.025px_7.84688px_rgba(0,_0,_0,_.027),_0px_0.8px_2.925px_#00000005,_0px_0.175px_1.04062px_rgba(0,_0,_0,_.013)]">
                     <Image
-                      src="/desk-hero-image2.webp"
-                      width={2560}
-                      height={1600}
+                      src="/hero-image-desktop.png"
+                      width={1920}
+                      height={1080}
                       priority
-                      alt="Screenshots of the dashboard project showing desktop version"
+                      className="hidden md:block"
+                      alt="Screenshots of the QCards project showing desktop version"
+                    />
+                    <Image
+                      src="/hero-image-mobile.png"
+                      width={776}
+                      height={830}
+                      priority
+                      className="block md:hidden"
+                      alt="Screenshots of the QCards project showing mobile version"
                     />
                   </div>
                 </div>
