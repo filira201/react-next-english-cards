@@ -2,6 +2,15 @@ import { auth } from "@/auth";
 import InfoCards from "../../ui/components/home/InfoCards";
 import LatestCards from "../../ui/components/home/LatestCards";
 
+export async function generateMetadata() {
+  const session = await auth();
+  const userName = session?.user?.name;
+
+  return {
+    title: userName,
+  };
+}
+
 export default async function Page() {
   const session = await auth();
 

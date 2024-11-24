@@ -2,10 +2,7 @@ import "@/app/ui/globals.css";
 import { inter } from "./ui/fonts";
 
 export const metadata = {
-  title: {
-    template: "%s | QCards",
-    default: "QCards",
-  },
+  title: "QCards",
   description:
     "QCards это удобный сервис для создания флеш-карточек и прохождения викторин. Улучшайте знания и память с помощью интерактивных карточек для учебы, работы и досуга.",
   icons: {
@@ -34,7 +31,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );

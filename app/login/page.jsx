@@ -2,6 +2,10 @@ import LoginForm from "@/app/ui/components/LoginForm";
 import Link from "next/link";
 import QcardsLogo from "../ui/components/QcardsLogo";
 
+export const metadata = {
+  title: "Вход",
+};
+
 export default function LoginPage() {
   return (
     <main className="text-[#050505] flex items-center justify-center md:h-screen">

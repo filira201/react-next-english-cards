@@ -5,6 +5,10 @@ import { CreateCard } from "@/app/ui/components/cards/Buttons";
 import { fetchThemesPagesByEmail } from "../../lib/data";
 import { auth } from "@/auth";
 
+export const metadata = {
+  title: "Карточки",
+};
+
 export default async function Page(props) {
   const searchParams = await props.searchParams;
   const session = await auth();

@@ -1,5 +1,15 @@
 import Quize from "@/app/ui/components/cards/Quize";
-import { fetchWordsById } from "@/app/lib/data";
+import { fetchThemeById, fetchWordsById } from "@/app/lib/data";
+
+export async function generateMetadata({ params }) {
+  const id = (await params).id;
+  const theme = await fetchThemeById(id);
+  const themeName = theme[0].name;
+
+  return {
+    title: themeName,
+  };
+}
 
 const Page = async (props) => {
   const params = await props.params;

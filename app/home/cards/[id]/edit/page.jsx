@@ -1,6 +1,10 @@
 import EditForm from "@/app/ui/components/cards/EditForm";
 import { fetchThemeById, fetchWordsById } from "@/app/lib/data";
 
+export const metadata = {
+  title: "Редактирование карточки",
+};
+
 export default async function Page(props) {
   const params = await props.params;
 

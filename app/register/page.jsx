@@ -2,6 +2,10 @@ import QcardsLogo from "../ui/components/QcardsLogo";
 import RegisterForm from "../ui/components/RegisterForm";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Регистрация",
+};
+
 export default function LoginPage() {
   return (
     <main className="text-[#050505] flex items-center justify-center md:h-screen">
