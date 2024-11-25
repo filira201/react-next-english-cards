@@ -70,7 +70,7 @@ export default function Home() {
                   objectFit: "cover",
                 }}
                 priority
-                alt="QCards image"
+                alt="Иллюстрация пользователей QCards с флеш-карточками, символизирующая обучение и веселье"
               />
             </div>
             <div className="my-0 mx-auto w-full grid col-start-1 col-end-13">
@@ -83,7 +83,7 @@ export default function Home() {
                       height={1080}
                       priority
                       className="hidden md:block"
-                      alt="Screenshots of the QCards project showing desktop version"
+                      alt="Скриншот проекта QCards, показывающий версию для настольных компьютеров"
                     />
                     <Image
                       src="/hero-image-mobile.png"
@@ -91,7 +91,7 @@ export default function Home() {
                       height={830}
                       priority
                       className="block md:hidden"
-                      alt="Screenshots of the QCards project showing mobile version"
+                      alt="Скриншот проекта QCards, показывающие версию для мобильных устройств"
                     />
                   </div>
                 </div>
