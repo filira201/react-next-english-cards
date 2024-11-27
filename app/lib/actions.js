@@ -158,7 +158,6 @@ export const deleteCard = async (id) => {
   } catch (error) {
     console.error("Error delete theme and words:", error);
   }
-
   revalidatePath("/home/cards");
 };
 

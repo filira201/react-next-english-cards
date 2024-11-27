@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { UpdateCard, DeleteCard } from "./Buttons";
+import { DeleteCardButton } from "./DeleteCardButton";
 
 const Card = ({ id, name }) => {
   return (
@@ -14,7 +15,8 @@ const Card = ({ id, name }) => {
       </Link>
       <div className="flex gap-4">
         <UpdateCard id={id} />
-        <DeleteCard id={id} />
+        <DeleteCardButton id={id} cardName={name}/>
+        {/* <DeleteCard id={id} /> */}
       </div>
     </div>
   );
